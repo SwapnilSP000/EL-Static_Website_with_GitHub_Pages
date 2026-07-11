@@ -8,3 +8,9 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Local SSL certs and server helper
+cert.pem
+key.pem
+serve_https.py
+

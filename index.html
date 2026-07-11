@@ -5,268 +5,641 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Swapnil Patil - Cloud and DevOps Engineer, Data Science Intern, Python, Docker, GenAI, and backend builder from Pune, India."
+      content="Swapnil Patil - Portfolio. Project NEXUS Futuristic Cloud, DevOps & Data Science Operations Command Center, based in Pune, India."
     />
     <meta
       name="keywords"
-      content="Swapnil Patil, Cloud Engineer, DevOps Engineer, Data Science Intern, Python, Docker, Jenkins, Terraform, AWS, MLOps"
+      content="Swapnil Patil, Cloud Engineer, DevOps Engineer, Data Science Intern, Python, Docker, Jenkins, Terraform, AWS, MLOps, Trading Systems, Pune"
     />
     <meta name="author" content="Swapnil Patil" />
-    <meta property="og:title" content="Swapnil Patil | Developer Portfolio" />
+    <meta property="og:title" content="Swapnil Patil | Project NEXUS Command Center" />
     <meta
       property="og:description"
-      content="Project-first portfolio for Cloud, DevOps, Data Science, and backend engineering roles."
+      content="A futuristic Cloud, DevOps & Data Science Operations Command Center for Swapnil Patil."
     />
     <meta property="og:type" content="website" />
-    <title>Swapnil Patil | Cloud, DevOps & Data Science</title>
+    <title>Swapnil Patil | Project NEXUS Command Center</title>
+    
+    <!-- Preconnect Google Fonts for faster loads -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+    
+    <!-- Critical path CSS to prevent flash of unstyled page elements -->
     <style>
+      :root {
+        --bg: #050816;
+        --bg-elevated: #0f172a;
+        --card-bg: rgba(15, 23, 42, 0.65);
+        --text: #ffffff;
+        --text-dim: #94a3b8;
+        --border: #1e293b;
+        --accent: #3b82f6;
+      }
       body {
         margin: 0;
-        background: #070b10;
-        color: #d5d9df;
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
       }
-
-      .page-shell {
-        min-height: 100vh;
+      #boot-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #03050b;
+        z-index: 99999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .reveal {
+        opacity: 0;
       }
     </style>
+    
+    <noscript>
+      <style>
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+        .skill-bar-fill {
+          width: 80% !important;
+        }
+        #boot-loader {
+          display: none !important;
+        }
+      </style>
+    </noscript>
+
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/script.js" defer></script>
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <!-- Skip navigation for accessibility screen readers -->
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- 1️⃣ Boot Loader Screen Overlay -->
+    <div id="boot-loader" role="dialog" aria-modal="true" aria-labelledby="boot-title">
+      <div class="boot-console">
+        <div class="boot-header">
+          <span id="boot-title">SYSTEM INTERFACE: NEXUS v2.0</span>
+          <span class="mono">UTC-12:00</span>
+        </div>
+        <div class="boot-body" id="boot-body">
+          <!-- Boot messages typed dynamically by script -->
+        </div>
+        <div class="boot-progress-bar">
+          <div class="boot-progress-fill" id="boot-progress-fill"></div>
+        </div>
+      </div>
+    </div>
 
     <div class="page-shell">
+      <!-- Main Navigation Header -->
       <header class="site-header">
-        <nav class="nav-wrap" aria-label="Primary navigation">
-          <a class="brand" href="#home" aria-label="Swapnil Patil home">SP</a>
+        <nav class="nav-wrap" aria-label="NEXUS Global Navigation">
+          <a class="brand" href="#home" aria-label="Project Nexus Home">PROJECT NEXUS</a>
+          <button class="menu-toggle" aria-label="Toggle navigation drawer" aria-expanded="false" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
           <div class="nav-links" id="nav-links">
             <span class="nav-indicator" aria-hidden="true"></span>
-            <a class="nav-link is-active" href="#home" data-section="home">Home</a>
-            <a class="nav-link" href="#about" data-section="about">About</a>
-            <a class="nav-link" href="#skills" data-section="skills">Skills</a>
-            <a class="nav-link" href="#projects" data-section="projects">Projects</a>
-            <a class="nav-link" href="#certifications" data-section="certifications">Certs</a>
-            <a class="nav-link" href="#contact" data-section="contact">Contact</a>
+            <a class="nav-link" href="#home">Home</a>
+            <a class="nav-link" href="#dashboard">Dashboard</a>
+            <a class="nav-link" href="#about">About</a>
+            <a class="nav-link" href="#skills">Skills</a>
+            <a class="nav-link" href="#terminal">Terminal</a>
+            <a class="nav-link" href="#pipeline">Pipeline</a>
+            <a class="nav-link" href="#projects">Projects</a>
+            <a class="nav-link" href="#datascience">DS Lab</a>
+            <a class="nav-link" href="#certifications">Certificates</a>
+            <a class="nav-link" href="#timeline">Timeline</a>
+            <a class="nav-link" href="#contact">Contact</a>
           </div>
         </nav>
       </header>
 
-      <main id="main">
-        <section class="hero section" id="home" aria-labelledby="hero-title">
-          <div class="container hero-layout">
-            <div class="hero-copy reveal">
-              <p class="eyebrow">Pune, Maharashtra, India</p>
+      <main id="main" tabindex="-1">
+        <!-- 2️⃣ Hero Section (Mission Control) -->
+        <section class="hero-section" id="home" aria-labelledby="hero-title">
+          <div class="hero-grid">
+            <div class="hero-content">
+              <span class="eyebrow">Cloud &bull; DevOps &bull; Data Science</span>
               <h1 id="hero-title">Swapnil Patil</h1>
               <p class="role-line">
-                <span id="typed-role">Cloud &amp; DevOps Engineer</span>
+                <span id="typed-role">Cloud Engineer</span>
                 <span class="cursor" aria-hidden="true"></span>
               </p>
-              <p class="hero-statement">
-                I build cloud deployments, CI/CD pipelines, and Python data systems that are easy to inspect, run, and improve.
+              <p class="hero-tagline">
+                Deploying high-performance cloud networks, scalable CI/CD environments, and data analysis pipelines. 
               </p>
-              <p class="target-roles">Target roles: Trading Systems Engineer, MLOps Engineer, Data/Backend Engineer.</p>
+              <div class="hero-actions">
+                <a class="button primary" href="#projects">View Projects</a>
+                <a class="button secondary" href="#contact">Contact Console</a>
+                <div class="social-links" aria-label="System profiles">
+                  <a class="icon-link" href="https://github.com/SwapnilSP000" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.18-3.37-1.18-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.5 9.5 0 0 1 12 5.01c.85 0 1.7.11 2.5.34 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+                  </a>
+                  <a class="icon-link" href="https://www.linkedin.com/in/swapnil-sp-sp80dp55" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                    <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5.01 2.5 2.5 0 0 0 0-5.01ZM3 9.4h3.96V21H3V9.4Zm6.25 0h3.79v1.58h.05c.53-.95 1.82-1.95 3.75-1.95 4.01 0 4.75 2.64 4.75 6.07V21h-3.95v-5.23c0-1.25-.02-2.85-1.74-2.85-1.74 0-2.01 1.36-2.01 2.76V21H9.25V9.4Z"/></svg>
+                  </a>
+                  <a class="icon-link" href="https://hub.docker.com/u/swapnilsp00" target="_blank" rel="noopener noreferrer" aria-label="Docker Hub Profile">
+                    <svg viewBox="0 0 24 24"><path d="M22.6 10.34c-.9-.6-2.1-.75-3.09-.39-.13-1.2-.86-2.25-1.97-2.84l-.4-.21-.27.36a4.06 4.06 0 0 0-.7 2.75h-2.04V7.72h-2.31v2.29H9.5V7.72H7.18v2.29H4.87V7.72H2.56v2.29H.75v2.16h21.3l.15-.01c.2-.01.46-.04.74-.12l.56-.17-.2-.55a2.5 2.5 0 0 0-.7-.98ZM2.26 13.14c.35 3.62 2.78 6.12 7.02 6.12 4.9 0 8.58-2.27 10.33-6.12H2.26Z"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="hero-interactive">
+              <div class="status-console">
+                <div class="status-header">
+                  <h3>NEXUS ENVIRONMENT STATUS</h3>
+                  <span class="pulse-dot"></span>
+                </div>
+                <div class="status-grid">
+                  <div class="status-row">
+                    <span class="status-label">SYSTEM CORE</span>
+                    <span class="status-value online">ONLINE</span>
+                  </div>
+                  <div class="status-row">
+                    <span class="status-label">AWS CLOUD ENGINE</span>
+                    <span class="status-value online">CONNECTED</span>
+                  </div>
+                  <div class="status-row">
+                    <span class="status-label">DOCKER KERNEL</span>
+                    <span class="status-value online">RUNNING</span>
+                  </div>
+                  <div class="status-row">
+                    <span class="status-label">KUBERNETES PODS</span>
+                    <span class="status-value online">3/3 ACTIVE</span>
+                  </div>
+                  <div class="status-row">
+                    <span class="status-label">TERRAFORM STATE</span>
+                    <span class="status-value online">SYNCED</span>
+                  </div>
+                  <div class="status-row">
+                    <span class="status-label">GITHUB INTEGRATION</span>
+                    <span class="status-value online">CONNECTED</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-              <div class="hero-actions" aria-label="Contact and social links">
-                <a class="button primary" href="mailto:sp2557295@gmail.com">Email me</a>
-                <a class="icon-link" href="https://github.com/SwapnilSP000" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path
-                      d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.18-3.37-1.18-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.5 9.5 0 0 1 12 5.01c.85 0 1.7.11 2.5.34 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"
-                    />
-                  </svg>
-                </a>
-                <a
-                  class="icon-link"
-                  href="https://www.linkedin.com/in/swapnil-sp-sp80dp55"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                >
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path
-                      d="M4.98 3.5a2.5 2.5 0 1 0 0 5.01 2.5 2.5 0 0 0 0-5.01ZM3 9.4h3.96V21H3V9.4Zm6.25 0h3.79v1.58h.05c.53-.95 1.82-1.95 3.75-1.95 4.01 0 4.75 2.64 4.75 6.07V21h-3.95v-5.23c0-1.25-.02-2.85-1.74-2.85-1.74 0-2.01 1.36-2.01 2.76V21H9.25V9.4Z"
-                    />
-                  </svg>
-                </a>
-                <a class="icon-link" href="https://hub.docker.com/u/swapnilsp00" target="_blank" rel="noopener noreferrer" aria-label="Docker Hub">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path
-                      d="M22.6 10.34c-.9-.6-2.1-.75-3.09-.39-.13-1.2-.86-2.25-1.97-2.84l-.4-.21-.27.36a4.06 4.06 0 0 0-.7 2.75h-2.04V7.72h-2.31v2.29H9.5V7.72H7.18v2.29H4.87V7.72H2.56v2.29H.75v2.16h21.3l.15-.01c.2-.01.46-.04.74-.12l.56-.17-.2-.55a2.5 2.5 0 0 0-.7-.98ZM2.26 13.14c.35 3.62 2.78 6.12 7.02 6.12 4.9 0 8.58-2.27 10.33-6.12H2.26Z"
-                    />
-                  </svg>
-                </a>
-                <a
-                  class="icon-link"
-                  href="https://www.credly.com/users/swapnil-patil.bbda7d25"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Credly"
-                >
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path
-                      d="M12 2 4.75 5.25v5.82c0 4.55 3.08 8.79 7.25 10.01 4.17-1.22 7.25-5.46 7.25-10.01V5.25L12 2Zm3.89 7.64-4.61 4.61-2.35-2.35 1.2-1.2 1.15 1.14 3.4-3.4 1.21 1.2Z"
-                    />
-                  </svg>
-                </a>
+        <!-- 3️⃣ Live Command Dashboard -->
+        <section class="section reveal" id="dashboard" aria-labelledby="dash-heading">
+          <div class="section-heading">
+            <h2 id="dash-heading">Live Telemetry Dashboard</h2>
+          </div>
+          <div class="dashboard-grid" id="counters-grid">
+            <div class="glass-card stat-card">
+              <div class="stat-number" data-target="17">0</div>
+              <div class="stat-label">Repositories</div>
+            </div>
+            <div class="glass-card stat-card">
+              <div class="stat-number" data-target="8">0</div>
+              <div class="stat-label">Docker Images</div>
+            </div>
+            <div class="glass-card stat-card">
+              <div class="stat-number" data-target="6">0</div>
+              <div class="stat-label">Certificates</div>
+            </div>
+            <div class="glass-card stat-card">
+              <div class="stat-number" data-target="15">0</div>
+              <div class="stat-label">Intern Months</div>
+            </div>
+            <div class="glass-card stat-card">
+              <div class="stat-number" data-target="12">0</div>
+              <div class="stat-label">Projects Shipped</div>
+            </div>
+            <div class="glass-card stat-card">
+              <div class="stat-number" data-target="18">0</div>
+              <div class="stat-label">Stars Accrued</div>
+            </div>
+            <div class="glass-card stat-card">
+              <div class="stat-number" data-target="7">0</div>
+              <div class="stat-label">Tech Languages</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4️⃣ About Me Section -->
+        <section class="section reveal" id="about" aria-labelledby="about-heading">
+          <div class="section-heading">
+            <h2 id="about-heading">Operator Profile</h2>
+          </div>
+          <div class="about-content">
+            <div class="about-text">
+              <p>
+                I'm an MCA postgrad candidate specializing in Cloud Infrastructure, DevOps automations, and Data Science systems. Currently working as a Data Science Intern at Fourise Software Solutions Pvt. Ltd, handling preprocessing EDA data tasks and support logs.
+              </p>
+              <p>
+                My background is built on a project-first learning philosophy. I actively architect Infrastructure as Code setups, script Jenkins pipelines, containerize backend microservices, and deploy analytics platforms.
+              </p>
+            </div>
+            <div class="about-image">
+              <img src="assets/images/swapnil-patil.png" onerror="this.src='assets/images/profile-placeholder.svg'" alt="Swapnil Patil Profile Photo" loading="lazy" width="200" height="250" />
+            </div>
+          </div>
+        </section>
+
+        <!-- 5️⃣ Skills Matrix Section -->
+        <section class="section reveal" id="skills" aria-labelledby="skills-heading">
+          <div class="section-heading">
+            <h2 id="skills-heading">Skills Control Panel</h2>
+          </div>
+          <div class="skills-grid" id="skills-matrix">
+            <div class="glass-card skill-card">
+              <h3>Cloud Operations</h3>
+              <div class="skill-bars-list">
+                <div class="skill-bar-row">
+                  <div class="skill-bar-info"><span>AWS (EC2, S3, RDS)</span><span>85%</span></div>
+                  <div class="skill-bar-track"><div class="skill-bar-fill animate-bar" data-width="85%"></div></div>
+                </div>
+                <div class="skill-bar-row">
+                  <div class="skill-bar-info"><span>Azure Infrastructure</span><span>60%</span></div>
+                  <div class="skill-bar-track"><div class="skill-bar-fill animate-bar" data-width="60%"></div></div>
+                </div>
+                <div class="skill-bar-row">
+                  <div class="skill-bar-info"><span>Google Cloud Platform</span><span>55%</span></div>
+                  <div class="skill-bar-track"><div class="skill-bar-fill animate-bar" data-width="55%"></div></div>
+                </div>
               </div>
             </div>
 
-            <div class="hero-projects reveal" aria-label="Top projects">
-              <p class="panel-label">First-screen proof</p>
-              <article class="mini-project">
-                <span>01</span>
-                <div>
-                  <h2>AI-Enhanced Intrusion Detection</h2>
-                  <p>Jupyter workflow for security analytics and ML experiments.</p>
+            <div class="glass-card skill-card">
+              <h3>DevOps &amp; IaC</h3>
+              <div class="skill-bars-list">
+                <div class="skill-bar-row">
+                  <div class="skill-bar-info"><span>Docker Containers</span><span>90%</span></div>
+                  <div class="skill-bar-track"><div class="skill-bar-fill animate-bar" data-width="90%"></div></div>
                 </div>
-              </article>
-              <article class="mini-project">
-                <span>02</span>
-                <div>
-                  <h2>TeleSupport Hub</h2>
-                  <p>Flask telecom support portal deployed on AWS EC2 with RDS.</p>
+                <div class="skill-bar-row">
+                  <div class="skill-bar-info"><span>Kubernetes Clusters</span><span>75%</span></div>
+                  <div class="skill-bar-track"><div class="skill-bar-fill animate-bar" data-width="75%"></div></div>
                 </div>
-              </article>
-              <article class="mini-project">
-                <span>03</span>
-                <div>
-                  <h2>Jenkins CI/CD Pipeline</h2>
-                  <p>Build, test, Docker image creation, and deployment flow.</p>
+                <div class="skill-bar-row">
+                  <div class="skill-bar-info"><span>Terraform (IaC)</span><span>80%</span></div>
+                  <div class="skill-bar-track"><div class="skill-bar-fill animate-bar" data-width="80%"></div></div>
                 </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section class="section" id="about" aria-labelledby="about-title">
-          <div class="container narrow reveal">
-            <p class="eyebrow">About</p>
-            <h2 id="about-title">A builder moving between infrastructure and data.</h2>
-            <div class="body-copy">
-              <p>
-                I am a Data Science Intern at Fourise Software Solutions, working from Sep 2025 to present. Before that, I built Cloud and DevOps experience through Velsync and Yuva Intern.
-              </p>
-              <p>
-                I am an MCA student and a self-taught builder who learns by shipping small, inspectable projects. My focus is practical systems: cloud hosting, pipelines, notebooks, monitoring, and backend workflows.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section class="section" id="skills" aria-labelledby="skills-title">
-          <div class="container reveal">
-            <div class="section-head">
-              <p class="eyebrow">Skills</p>
-              <h2 id="skills-title">Grouped by real working strength.</h2>
-            </div>
-
-            <div class="skills-grid">
-              <article class="skill-group">
-                <h3>Cloud</h3>
-                <div class="chip-list">
-                  <span>AWS EC2</span><span>S3</span><span>CloudFront</span><span>RDS</span><span>CloudFormation</span><span>IAM</span><span>Azure basic</span><span>GCP basic</span><span>IBM Cloud basic</span>
-                </div>
-              </article>
-              <article class="skill-group">
-                <h3>Containers &amp; Orchestration</h3>
-                <div class="chip-list">
-                  <span>Docker</span><span>Docker Hub</span><span>Kubernetes</span><span>AWS ECS</span>
-                </div>
-              </article>
-              <article class="skill-group">
-                <h3>DevOps &amp; CI/CD</h3>
-                <div class="chip-list">
-                  <span>Jenkins</span><span>Git</span><span>GitHub</span><span>Terraform</span><span>GitHub Actions</span><span>Render</span>
-                </div>
-              </article>
-              <article class="skill-group">
-                <h3>Languages</h3>
-                <div class="chip-list">
-                  <span>Python</span><span>JavaScript</span><span>SQL</span><span>HCL</span><span>C</span><span>C++</span><span>C#</span><span>HTML</span><span>CSS</span><span>ASP.NET</span><span>Shell</span>
-                </div>
-              </article>
-              <article class="skill-group">
-                <h3>Data &amp; AI</h3>
-                <div class="chip-list">
-                  <span>pandas</span><span>EDA</span><span>ML model building</span><span>Jupyter</span><span>ChatGPT</span><span>Gemini</span><span>Perplexity</span><span>Claude</span><span>DeepSeek R1 API</span>
-                </div>
-              </article>
-              <article class="skill-group">
-                <h3>Monitoring</h3>
-                <div class="chip-list">
-                  <span>Prometheus</span><span>Grafana</span><span>Loki</span><span>Alertmanager</span>
-                </div>
-              </article>
-              <article class="skill-group">
-                <h3>Databases &amp; Servers</h3>
-                <div class="chip-list">
-                  <span>MySQL</span><span>MongoDB</span><span>SQL Server</span><span>Nginx</span>
-                </div>
-              </article>
-              <article class="skill-group">
-                <h3>Tools &amp; OS</h3>
-                <div class="chip-list">
-                  <span>Excel</span><span>PowerPoint</span><span>Linux</span><span>Mac</span><span>Windows</span>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section class="section" id="projects" aria-labelledby="projects-title">
-          <div class="container reveal">
-            <div class="section-head projects-head">
-              <div>
-                <p class="eyebrow">Projects</p>
-                <h2 id="projects-title">Public work, loaded from GitHub.</h2>
               </div>
-              <p class="section-note">Uses GitHub REST API with a local fallback.</p>
             </div>
-            <div class="project-grid" id="project-grid" aria-live="polite">
-              <article class="project-card loading-card">
-                <p class="meta">Loading repositories...</p>
-              </article>
+
+            <div class="glass-card skill-card">
+              <h3>CI/CD &amp; Systems</h3>
+              <div class="skill-bars-list">
+                <div class="skill-bar-row">
+                  <div class="skill-bar-info"><span>Jenkins Automation</span><span>85%</span></div>
+                  <div class="skill-bar-track"><div class="skill-bar-fill animate-bar" data-width="85%"></div></div>
+                </div>
+                <div class="skill-bar-row">
+                  <div class="skill-bar-info"><span>GitHub Actions</span><span>80%</span></div>
+                  <div class="skill-bar-track"><div class="skill-bar-fill animate-bar" data-width="80%"></div></div>
+                </div>
+                <div class="skill-bar-row">
+                  <div class="skill-bar-info"><span>Linux Core &amp; Nginx</span><span>85%</span></div>
+                  <div class="skill-bar-track"><div class="skill-bar-fill animate-bar" data-width="85%"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-card skill-card">
+              <h3>Data &amp; Artificial Intelligence</h3>
+              <div class="skill-bars-list">
+                <div class="skill-bar-row">
+                  <div class="skill-bar-info"><span>Python Data Analysis</span><span>85%</span></div>
+                  <div class="skill-bar-track"><div class="skill-bar-fill animate-bar" data-width="85%"></div></div>
+                </div>
+                <div class="skill-bar-row">
+                  <div class="skill-bar-info"><span>Machine Learning models</span><span>70%</span></div>
+                  <div class="skill-bar-track"><div class="skill-bar-fill animate-bar" data-width="70%"></div></div>
+                </div>
+                <div class="skill-bar-row">
+                  <div class="skill-bar-info"><span>Databases (MySQL, Mongo)</span><span>80%</span></div>
+                  <div class="skill-bar-track"><div class="skill-bar-fill animate-bar" data-width="80%"></div></div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        <section class="section" id="certifications" aria-labelledby="certifications-title">
-          <div class="container reveal">
-            <div class="section-head">
-              <p class="eyebrow">Certifications</p>
-              <h2 id="certifications-title">Verified learning signals.</h2>
+        <!-- 6️⃣ Interactive Terminal Section -->
+        <section class="section reveal" id="terminal" aria-labelledby="terminal-heading">
+          <div class="section-heading">
+            <h2 id="terminal-heading">NEXUS Command Shell</h2>
+          </div>
+          <div class="terminal-section-wrap">
+            <div class="terminal-card">
+              <div class="terminal-header">
+                <div class="terminal-buttons">
+                  <span class="btn-close" aria-hidden="true"></span>
+                  <span class="btn-minimize" aria-hidden="true"></span>
+                  <span class="btn-maximize" aria-hidden="true"></span>
+                </div>
+                <span class="terminal-title">swapnil@devops: ~</span>
+              </div>
+              <div class="terminal-body" id="terminal-body">
+                <div class="terminal-output" id="terminal-output"></div>
+                <div class="terminal-input-line">
+                  <span class="prompt">swapnil@devops:~$</span>
+                  <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal input prompt query" />
+                </div>
+              </div>
             </div>
-            <div class="cert-grid">
-              <article><span>AWS</span><h3>AWS Cloud Quest: Cloud Practitioner</h3></article>
-              <article><span>Google Cloud</span><h3>Gemini Multimodality and Multimodal RAG</h3></article>
-              <article><span>Google Cloud</span><h3>Prompt Design in Vertex AI</h3></article>
-              <article><span>IBM SkillsBuild</span><h3>Journey to Cloud: Envisioning Your Solution</h3></article>
-              <article><span>SmartBridge</span><h3>Applied Data Science</h3></article>
-              <article><span>SmartBridge</span><h3>Cloud Practitioner</h3></article>
-            </div>
-            <a class="text-link" href="https://www.credly.com/users/swapnil-patil.bbda7d25" target="_blank" rel="noopener noreferrer">
-              View Credly profile
-            </a>
           </div>
         </section>
 
-        <section class="section contact-section" id="contact" aria-labelledby="contact-title">
-          <div class="container narrow reveal">
-            <p class="eyebrow">Contact</p>
-            <h2 id="contact-title">For roles, internships, and project discussions.</h2>
-            <a class="button primary contact-button" href="mailto:sp2557295@gmail.com">Email me: sp2557295@gmail.com</a>
+        <!-- 7️⃣ DevOps Pipeline Section -->
+        <section class="section reveal" id="pipeline" aria-labelledby="pipe-heading">
+          <div class="section-heading">
+            <h2 id="pipe-heading">DevOps Delivery Pipeline</h2>
+          </div>
+          <div class="pipeline-visualizer" id="pipeline-visualizer">
+            <div class="pipeline-line"></div>
+            <div class="pipeline-progress-line" id="pipeline-progress-line"></div>
+            
+            <div class="pipeline-node" data-index="0">
+              <div class="pipeline-indicator"></div>
+              <div class="pipeline-content">
+                <h3>Developer Console</h3>
+                <p>Code modifications updated locally and pushed to GitHub version control.</p>
+              </div>
+            </div>
+            <div class="pipeline-node" data-index="1">
+              <div class="pipeline-indicator"></div>
+              <div class="pipeline-content">
+                <h3>Git Commit Logs</h3>
+                <p>Changes staged and locked inside local commits for deploy auditing.</p>
+              </div>
+            </div>
+            <div class="pipeline-node" data-index="2">
+              <div class="pipeline-indicator"></div>
+              <div class="pipeline-content">
+                <h3>GitHub Actions webhook</h3>
+                <p>Webhooks trigger runner environments to boot testing packages.</p>
+              </div>
+            </div>
+            <div class="pipeline-node" data-index="3">
+              <div class="pipeline-indicator"></div>
+              <div class="pipeline-content">
+                <h3>Docker Container Engine</h3>
+                <p>Software packages are compiled and isolated inside Docker runtime environments.</p>
+              </div>
+            </div>
+            <div class="pipeline-node" data-index="4">
+              <div class="pipeline-indicator"></div>
+              <div class="pipeline-content">
+                <h3>Terraform (IaC)</h3>
+                <p>Provision virtual networks and load balancers dynamically on cloud instances.</p>
+              </div>
+            </div>
+            <div class="pipeline-node" data-index="5">
+              <div class="pipeline-indicator"></div>
+              <div class="pipeline-content">
+                <h3>AWS Production Nodes</h3>
+                <p>Code deploys across secure clusters running behind proxy load balancers.</p>
+              </div>
+            </div>
+            <div class="pipeline-node" data-index="6">
+              <div class="pipeline-indicator"></div>
+              <div class="pipeline-content">
+                <h3>Prometheus Monitoring</h3>
+                <p>Telemetry stats metrics track CPU load, memory limits, and HTTP requests logs.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 8️⃣ Projects Explorer Section -->
+        <section class="section reveal" id="projects" aria-labelledby="proj-heading">
+          <div class="section-heading">
+            <h2 id="proj-heading">Nexus File Explorer</h2>
+          </div>
+          <div class="glass-card explorer-card">
+            <div class="explorer-header">
+              <div class="terminal-buttons">
+                <span class="btn-close" aria-hidden="true"></span>
+                <span class="btn-minimize" aria-hidden="true"></span>
+                <span class="btn-maximize" aria-hidden="true"></span>
+              </div>
+              <div class="explorer-address" id="explorer-address">C:\nexus\projects\all</div>
+            </div>
+            <div class="explorer-layout">
+              <aside class="explorer-sidebar" aria-label="Projects navigation sidebar">
+                <div class="explorer-folder-tab active" data-filter="all">📁 All Nodes</div>
+                <div class="explorer-folder-tab" data-filter="devops">📁 DevOps Tasks</div>
+                <div class="explorer-folder-tab" data-filter="cloud">📁 Cloud Projects</div>
+                <div class="explorer-folder-tab" data-filter="datascience">📁 Data Science</div>
+              </aside>
+              <div class="explorer-main">
+                <div class="projects-grid" id="project-grid" aria-live="polite">
+                  <div class="loading-placeholder">Connecting to GitHub registry...</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 9️⃣ Data Science Lab Section -->
+        <section class="section reveal" id="datascience" aria-labelledby="ds-heading">
+          <div class="section-heading">
+            <h2 id="ds-heading">Data Science JupyterLab</h2>
+          </div>
+          <div class="glass-card lab-card">
+            <div class="lab-header">
+              <div class="terminal-buttons">
+                <span class="btn-close" aria-hidden="true"></span>
+                <span class="btn-minimize" aria-hidden="true"></span>
+                <span class="btn-maximize" aria-hidden="true"></span>
+              </div>
+              <div class="lab-tabs">
+                <span class="lab-tab active" data-tab="intrusion">intrusion_detect.ipynb</span>
+                <span class="lab-tab" data-tab="waste">waste_classifier.ipynb</span>
+              </div>
+            </div>
+            <div class="lab-workspace" id="lab-workspace">
+              <!-- Dynamically populated by script.js based on selected tab -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 🔟 Certificates Vault Section -->
+        <section class="section reveal" id="certifications" aria-labelledby="certs-heading">
+          <div class="section-heading">
+            <h2 id="certs-heading">Certificates Vault</h2>
+          </div>
+          <div class="certs-grid">
+            <div class="cert-card" data-cert="aws">
+              <span class="cert-icon">AWS</span>
+              <div class="cert-info">
+                <h3>AWS Cloud Quest: Cloud Practitioner</h3>
+                <p>Amazon Web Services (AWS)</p>
+              </div>
+            </div>
+            <div class="cert-card" data-cert="rich-docs">
+              <span class="cert-icon">GC</span>
+              <div class="cert-info">
+                <h3>Inspect Rich Documents with Gemini</h3>
+                <p>Google Cloud Platform (GCP)</p>
+              </div>
+            </div>
+            <div class="cert-card" data-cert="prompt">
+              <span class="cert-icon">GC</span>
+              <div class="cert-info">
+                <h3>Prompt Design in Vertex AI</h3>
+                <p>Google Cloud Platform (GCP)</p>
+              </div>
+            </div>
+            <div class="cert-card" data-cert="ibm-cloud">
+              <span class="cert-icon">IBM</span>
+              <div class="cert-info">
+                <h3>Journey to Cloud: Envision Solutions</h3>
+                <p>IBM SkillsBuild</p>
+              </div>
+            </div>
+            <div class="cert-card" data-cert="ds-smart">
+              <span class="cert-icon">SB</span>
+              <div class="cert-info">
+                <h3>Applied Data Science</h3>
+                <p>SmartBridge (Google Colab)</p>
+              </div>
+            </div>
+            <div class="cert-card" data-cert="cp-smart">
+              <span class="cert-icon">SB</span>
+              <div class="cert-info">
+                <h3>Cloud Practitioner Badge</h3>
+                <p>SmartBridge credentials</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 11️⃣ GitHub & Docker Hub Panel Section -->
+        <section class="section reveal" id="hubs" aria-labelledby="hubs-heading">
+          <div class="section-heading">
+            <h2 id="hubs-heading">Registries &amp; Hubs</h2>
+          </div>
+          <div class="hubs-grid">
+            <div class="glass-card hub-card">
+              <div class="hub-card-header">
+                <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.18-3.37-1.18-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.5 9.5 0 0 1 12 5.01c.85 0 1.7.11 2.5.34 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+                <h3>GitHub Analytics</h3>
+              </div>
+              <div class="hub-metrics">
+                <div>
+                  <h4 class="mono" style="font-size: 1.5rem; color:#fff;">17</h4>
+                  <p style="font-size: 0.8rem; color:var(--text-dim);">Public Repos</p>
+                </div>
+                <div>
+                  <h4 class="mono" style="font-size: 1.5rem; color:#fff;">18</h4>
+                  <p style="font-size: 0.8rem; color:var(--text-dim);">Stars Earned</p>
+                </div>
+              </div>
+            </div>
+            <div class="glass-card hub-card">
+              <div class="hub-card-header">
+                <svg viewBox="0 0 24 24"><path d="M22.6 10.34c-.9-.6-2.1-.75-3.09-.39-.13-1.2-.86-2.25-1.97-2.84l-.4-.21-.27.36a4.06 4.06 0 0 0-.7 2.75h-2.04V7.72h-2.31v2.29H9.5V7.72H7.18v2.29H4.87V7.72H2.56v2.29H.75v2.16h21.3l.15-.01c.2-.01.46-.04.74-.12l.56-.17-.2-.55a2.5 2.5 0 0 0-.7-.98ZM2.26 13.14c.35 3.62 2.78 6.12 7.02 6.12 4.9 0 8.58-2.27 10.33-6.12H2.26Z"/></svg>
+                <h3>Docker Hub Registry</h3>
+              </div>
+              <div class="hub-metrics">
+                <div>
+                  <h4 class="mono" style="font-size: 1.5rem; color:#fff;">8</h4>
+                  <p style="font-size: 0.8rem; color:var(--text-dim);">Container Images</p>
+                </div>
+                <div>
+                  <h4 class="mono" style="font-size: 1.5rem; color:#fff;">1K+</h4>
+                  <p style="font-size: 0.8rem; color:var(--text-dim);">Image Pulls</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 12️⃣ Career Timeline Section -->
+        <section class="section reveal" id="timeline" aria-labelledby="timeline-heading">
+          <div class="section-heading">
+            <h2 id="timeline-heading">Career Node Track</h2>
+          </div>
+          <div class="timeline-wrap">
+            <div class="timeline-track">
+              <div class="timeline-node-card">
+                <div class="timeline-node-date">2021 - 2024</div>
+                <h3>BCA Graduation</h3>
+                <p>Bachelor's of Computer Applications. Grade B+. Jaysingpur College.</p>
+              </div>
+              <div class="timeline-node-card">
+                <div class="timeline-node-date">Late 2024</div>
+                <h3>MCA Admission</h3>
+                <p>Master of Computer Applications. DY Patil Technical Campus.</p>
+              </div>
+              <div class="timeline-node-card">
+                <div class="timeline-node-date">Oct - Nov 2025</div>
+                <h3>Yuva Intern</h3>
+                <p>DevOps Assistant. Integrated prometheus dashboards and monitoring stacks.</p>
+              </div>
+              <div class="timeline-node-card">
+                <div class="timeline-node-date">Nov - Dec 2025</div>
+                <h3>Velsync Intern</h3>
+                <p>Cloud and DevOps Intern. Configured local Docker image pipelines.</p>
+              </div>
+              <div class="timeline-node-card">
+                <div class="timeline-node-date">Sep 2025 - Present</div>
+                <h3>Fourise Software</h3>
+                <p>Data Science Intern. EDA processing and Python cleaning modules.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 13️⃣ Contact Section -->
+        <section class="section reveal" id="contact" aria-labelledby="contact-heading">
+          <div class="section-heading">
+            <h2 id="contact-heading">Comm Console</h2>
+          </div>
+          <div class="contact-console">
+            <p>Initiate direct communication channels below. I am open to technical opportunities.</p>
+            <div class="contact-buttons-grid">
+              <a class="contact-btn" href="mailto:sp2557295@gmail.com" aria-label="Send direct email to Swapnil">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                Email Channel
+              </a>
+              <a class="contact-btn" href="https://www.linkedin.com/in/swapnil-sp-sp80dp55" target="_blank" rel="noopener noreferrer" aria-label="Open Swapnil's LinkedIn profile page">
+                <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                LinkedIn Net
+              </a>
+              <a class="contact-btn" href="https://github.com/SwapnilSP000" target="_blank" rel="noopener noreferrer" aria-label="Open Swapnil's GitHub repository page">
+                <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.18-3.37-1.18-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.5 9.5 0 0 1 12 5.01c.85 0 1.7.11 2.5.34 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+                GitHub Hub
+              </a>
+            </div>
           </div>
         </section>
       </main>
 
+      <!-- Site Footer -->
       <footer class="site-footer">
-        <div class="container footer-inner">
-          <p>© 2026 Swapnil Patil. Built for GitHub Pages.</p>
-          <a href="#home">Back to top</a>
+        <div class="footer-inner">
+          <p>&copy; 2026 Swapnil Patil. NEXUS Terminal Mainframe.</p>
+          <a class="back-link" href="#home">Back to top</a>
         </div>
       </footer>
+    </div>
+
+    <!-- modal overlay for certificates preview details -->
+    <div class="modal-overlay" id="cert-modal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modal-content">
+        <button class="modal-close" id="modal-close" aria-label="Close credentials popup modal">&times;</button>
+        <div class="modal-body" id="modal-body-content">
+          <!-- Populated dynamically by script.js -->
+        </div>
+      </div>
     </div>
   </body>
 </html>
