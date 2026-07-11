@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function runBootLoader() {
     if (!bootLoader || !bootBody || !bootProgressFill) return;
-    
+
     // Start progress bar animation
     setTimeout(() => {
       bootProgressFill.style.width = "100%";
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function typeRole() {
     if (!typedRoleEl) return;
     const currentRole = roles[roleIdx];
-    
+
     if (isDeleting) {
       typedRoleEl.textContent = currentRole.substring(0, charIdx - 1);
       charIdx--;
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(typeRole, typingSpeed);
   }
-  
+
   setTimeout(typeRole, 2500); // Start typing after boot completes
 
   // --- 4️⃣ Telemetry Stats Counter Animation ---
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const duration = 1500;
       const stepTime = Math.abs(Math.floor(duration / target));
       let current = 0;
-      
+
       const timer = setInterval(() => {
         current++;
         el.textContent = current;
@@ -148,12 +148,12 @@ document.addEventListener("DOMContentLoaded", () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('is-visible');
-        
+
         // Trigger counters if dashboard visible
         if (entry.target.id === 'dashboard') {
           countStats(entry);
         }
-        
+
         // Trigger skills progress bar transition
         if (entry.target.id === 'skills') {
           const bars = entry.target.querySelectorAll('.skill-bar-fill');
@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
             bar.style.width = bar.getAttribute('data-width');
           });
         }
-        
+
         // Highlight active navbar link
         const matchingLink = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
         if (matchingLink) {
@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
           matchingLink.classList.add('active');
           updateNavIndicator(matchingLink);
         }
-        
+
         observer.unobserve(entry.target);
       }
     });
@@ -233,13 +233,13 @@ document.addEventListener("DOMContentLoaded", () => {
   - <b style="color:#10b981;">neofetch</b>    : Display NEXUS systems hardware profiles
   - <b style="color:#10b981;">contact</b>     : List system email and LinkedIn channels
   - <b style="color:#10b981;">clear</b>       : Wipe the console logging history`;
-      
+
       case 'whoami':
       case 'about':
         return `Swapnil Patil | Cloud, DevOps & Data Science Intern.
 Postgraduate MCA candidate focused on Kubernetes, Docker, and IaC pipelines.
 Based in Pune, Maharashtra, India.`;
-      
+
       case 'skills':
         return `Cloud Platform  : AWS (EC2, S3, RDS), Google Cloud
 Containerization: Docker, Kubernetes, Docker Compose
@@ -324,7 +324,7 @@ Container repositories:
             terminalOutput.appendChild(respEl);
           }
         }
-        
+
         scrollTerminalToBottom();
       }
     });
@@ -339,13 +339,13 @@ Container repositories:
     if (!pipelineVisualizer || !pipelineProgressLine) return;
     const rect = pipelineVisualizer.getBoundingClientRect();
     const windowHeight = window.innerHeight;
-    
+
     // Scroll progress calculations (from 0% to 100%)
     const startPoint = windowHeight * 0.8;
     const endPoint = windowHeight * 0.2;
     const totalDist = startPoint - endPoint;
     const progress = Math.min(Math.max((startPoint - rect.top) / totalDist, 0), 1);
-    
+
     pipelineProgressLine.style.height = `${progress * 100}%`;
 
     // Toggle active classes based on scroll progress heights
@@ -423,7 +423,7 @@ Container repositories:
   function displayProjectCards(repos) {
     if (!projectGrid) return;
     projectGrid.innerHTML = '';
-    
+
     if (repos.length === 0) {
       projectGrid.innerHTML = '<div style="color:var(--text-dim); padding:20px;">No repository elements found matching this folder directory.</div>';
       return;
@@ -432,11 +432,11 @@ Container repositories:
     repos.forEach(repo => {
       const title = repo.name.replace(/_/g, ' ').replace(/-/g, ' ');
       const stars = repo.stargazers_count || 0;
-      
+
       const card = document.createElement('div');
       card.className = 'project-card';
-      
-      const tags = repo.topics && repo.topics.length > 0 
+
+      const tags = repo.topics && repo.topics.length > 0
         ? repo.topics.slice(0, 3).map(t => `<span class="tech-badge">${t}</span>`).join('')
         : `<span class="tech-badge">repository</span>`;
 
@@ -458,7 +458,7 @@ Container repositories:
       if (!res.ok) throw new Error("API rate limits exceeded");
       const repos = await res.json();
       const nonForks = repos.filter(r => !r.fork && r.name !== 'ci-cd-resume');
-      
+
       // Match from API or fallback
       loadedRepositories = nonForks.length > 0 ? nonForks : FALLBACK_REPOS;
       filterExplorerFolder("all");
